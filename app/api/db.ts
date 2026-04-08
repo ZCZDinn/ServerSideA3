@@ -1,0 +1,30 @@
+import { MongoClient, Db, ServerApiVersion } from 'mongodb';
+// dinnchristian_db_user
+// EmMhBNF5NBwqLxjx
+
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
+
+export async function connectToDB() {
+    if (cachedClient && cachedDb) {
+        return { client: cachedClient, db: cachedDb };
+    }
+
+    const uri = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.bxsz71g.mongodb.net/?appName=Cluster0`;
+    // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+    const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+    });
+
+    await client.connect();
+
+    cachedClient = client;
+    cachedDb = client.db('rickmorty');
+    
+    return { client, db: client.db('rickmorty') };
+    
+}

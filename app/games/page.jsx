@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default async function Characters() {
+export default async function Games() {
 
     const response = await fetch(`${process.env.BACKEND_URL}/api/games`);
     const data = await response.json()

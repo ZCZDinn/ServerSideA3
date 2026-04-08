@@ -1,9 +1,9 @@
-export default function Character( {name, species, imageURL} ) {
+export default function Character( {characterData} ) {
     return (
         <>
-            <h2>{name}</h2>
-            <p>{species}</p>
-            <img src={imageURL}></img>
+            <h2>{characterData.name}</h2>
+            <p>{characterData.species}</p>
+            <img src={characterData.image}></img>
         </>
     )
 }
