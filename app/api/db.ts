@@ -1,6 +1,4 @@
 import { MongoClient, Db, ServerApiVersion } from 'mongodb';
-// dinnchristian_db_user
-// EmMhBNF5NBwqLxjx
 
 let cachedClient: MongoClient | null = null;
 let cachedDb: Db | null = null;
